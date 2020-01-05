@@ -74,8 +74,8 @@ client.on('message', async msg => {
         }
     }
     if (msg.channel.name === "add-proxies") {
-
         if (cmd.startsWith("!add\n")) {
+            msg.delete();
             var proxiesData = []
             var proxiesInfo = cmd.replace("!add\n", "").split("\n")
             proxiesInfo.forEach(user => {
@@ -100,6 +100,7 @@ client.on('message', async msg => {
         }
 
         if (cmd === "!proxies") {
+            msg.delete();
             await _admin.proxies((data) => {
                 console.log(data)
                 msg.channel.sendMessage(String(data.msg))
@@ -132,6 +133,7 @@ client.on('message', async msg => {
         }
 
         if (cmd === "!users") {
+            msg.delete();
             var res;
             await _admin.users((data) => {
                 res = data
@@ -149,7 +151,7 @@ client.on('message', async msg => {
         var matchchan = server.channels.find(chan => chan.permissionOverwrites.has(author.id))
         if (matchchan !== null) {
             msg.delete();
-            return msg.channel.sendMessage(`already Login: ${author.username} please check your Channel under "COMMAND" Calogary`)
+            return msg.channel.sendMessage(embed.important(16060689, "```diff\n- already Login: " + author.username + "please check your Channel under \"COMMAND\" Calogary```"))
         }
         else if (cmd === `${prefix}login`) {
             // need verify user!!
@@ -188,7 +190,7 @@ client.on('message', async msg => {
                             chan.send(embed.commands);
                         })
                     msg.delete();
-                    msg.channel.sendMessage(embed.commands(3407616, "```bash\"Login Success:"  + author.username + "\"```"))
+                    msg.channel.sendMessage(embed.important(3407616, "```bash\"Login Success:"  + author.username + "\"```"))
                 }
                 else {
                     msg.channel.sendMessage(data.msg);
@@ -204,7 +206,7 @@ client.on('message', async msg => {
             msg.delete()
             await _user.balance(msg.channel.name, data => {
                 if (typeof data === 'number') {
-                    return msg.channel.sendMessage(embed.commands(3407616, "```bash\"remain GB:"  + data.toFixed(2) + "\"```"))
+                    return msg.channel.sendMessage(embed.important(3407616, "```bash\"remain GB:"  + data.toFixed(2) + "\"```"))
                 } else {
                     return msg.channel.sendMessage(data)
                 }
@@ -221,7 +223,7 @@ client.on('message', async msg => {
             msg.delete()
             await _user.changePassword(msg.channel.name, data => {
                 if (data === 'change') {
-                    msg.channel.sendMessage(embed.commands(16060689, "```diff\n- Please regenerate and redownload your list"))
+                    msg.channel.sendMessage(embed.important(16060689, "```diff\n- Please regenerate and redownload your list```"))
                 }
             })
         }
@@ -249,8 +251,9 @@ client.on('message', async msg => {
         else if (cmd === "!help") {
             msg.delete()
             msg.channel.send(embed.commands);
+        } else {
+            msg.delete()
         }
-
     }
 
     // console.log(`${msg.author.username} said: ${msg.content}`)
