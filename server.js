@@ -86,7 +86,8 @@ client.on('message', async msg => {
                         psPassword: proxiesInfo[1],
                         psPxUsername: proxiesInfo[2],
                         psPxPassword: proxiesInfo[3],
-                        psCookies: proxiesInfo[4]
+                        psAuth: proxiesInfo[4],
+                        psCsrf: proxiesInfo[5]
                     }
                     proxiesData.push(map);
                 }
