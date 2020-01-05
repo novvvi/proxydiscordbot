@@ -186,14 +186,14 @@ client.on('message', async msg => {
                                     });
                                 }
                             )
-                            chan.send(embed.important(16060689, "```" + embed.commands + "```"))
+                            chan.send(embed.commands);
                         })
                     msg.delete();
                     msg.channel.sendMessage(embed.important(3407616, "```\"Login Success:"  + author.username + "\"```"))
                 }
                 else {
                     msg.delete();
-                    msg.channel.sendMessage(data.msg);
+                    msg.channel.sendMessage(embed.important(16060689, "```" + data.msg + "```"));
                 }
             }).catch(err => {
                 console.log(err)
