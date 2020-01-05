@@ -1,0 +1,1 @@
+folder directory for all the customer list
