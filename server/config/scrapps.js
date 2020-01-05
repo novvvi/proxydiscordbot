@@ -64,10 +64,9 @@ obj = {
 
         getAllAccounts()
         .then(async accs => {
-            
-            if(accs.length) {
-                await updateAllAccounts(accs, sleep(100000));
+            if(accs.length === 0) {
                 console.log("no proxies in use")
+                await sleep(100000);
                 obj.pstreams(client)
             }else {
                 await updateAllAccounts(accs, sleep(30000));
