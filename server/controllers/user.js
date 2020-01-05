@@ -33,7 +33,12 @@ module.exports = {
                 return {bool: false, msg: "All proxies are in use"}
             }
             else {
-                clientBal = data.credit
+                if(data.length === 0){
+                    return {bool: false, msg: "You must !active first"}
+                } else {
+                    clientBal = data.credit
+                }
+                
             }
         })
         
