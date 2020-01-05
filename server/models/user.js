@@ -24,11 +24,7 @@ const UserSchema = new mongoose.Schema({
     },
     discordId: {
         type: String,
-        index: {
-            unique: true,
-            partialFilterExpression: { discordId: { $type: 'string' } },
-        },
-        default: null, 
+        default: null
     },
     credit: {
         type: Number,
