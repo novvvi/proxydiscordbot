@@ -35,5 +35,22 @@ module.exports = {
                 },
             ]
         }
+    },
+    important: (color, msg) => {
+        return {
+        "embed": {
+            "color": color,
+            "footer": {
+                "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+                "text": "ENVI PROXIES"
+            },
+            "author": {
+                "name": "IMPORTANT MESSAGE"
+            },
+
+            "description": msg,
+
+        }
+    } 
     }
 }

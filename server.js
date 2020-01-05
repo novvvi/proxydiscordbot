@@ -188,7 +188,7 @@ client.on('message', async msg => {
                             chan.send(embed.commands);
                         })
                     msg.delete();
-                    msg.channel.sendMessage(`Login Success: ${author.username}`)
+                    msg.channel.sendMessage(embed.commands(3407616, "```bash\"Login Success:"  + author.username + "\"```"))
                 }
                 else {
                     msg.channel.sendMessage(data.msg);
@@ -204,7 +204,7 @@ client.on('message', async msg => {
             msg.delete()
             await _user.balance(msg.channel.name, data => {
                 if (typeof data === 'number') {
-                    return msg.channel.sendMessage(`remain GB: ${data.toFixed(2)}`)
+                    return msg.channel.sendMessage(embed.commands(3407616, "```bash\"remain GB:"  + data.toFixed(2) + "\"```"))
                 } else {
                     return msg.channel.sendMessage(data)
                 }
@@ -221,7 +221,7 @@ client.on('message', async msg => {
             msg.delete()
             await _user.changePassword(msg.channel.name, data => {
                 if (data === 'change') {
-                    msg.channel.sendMessage("Your password has changed\nplease redownload your list")
+                    msg.channel.sendMessage(embed.commands(16060689, "```diff\n- Please regenerate and redownload your list"))
                 }
             })
         }
