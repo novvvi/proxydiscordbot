@@ -151,7 +151,7 @@ client.on('message', async msg => {
         var matchchan = server.channels.find(chan => chan.permissionOverwrites.has(author.id))
         if (matchchan !== null) {
             msg.delete();
-            return msg.channel.sendMessage(embed.important(16060689, "```diff\n- already Login: " + author.username + "please check your Channel under \"COMMAND\" Calogary```"))
+            return msg.channel.sendMessage(embed.important(16060689, "```\n- already Login: " + author.username + "please check your Channel under \"COMMAND\" Calogary```"))
         }
         else if (cmd === `${prefix}login`) {
             // need verify user!!
@@ -190,7 +190,7 @@ client.on('message', async msg => {
                             chan.send(embed.commands);
                         })
                     msg.delete();
-                    msg.channel.sendMessage(embed.important(3407616, "```bash\"Login Success:"  + author.username + "\"```"))
+                    msg.channel.sendMessage(embed.important(3407616, "```\"Login Success:"  + author.username + "\"```"))
                 }
                 else {
                     msg.channel.sendMessage(data.msg);
@@ -206,7 +206,7 @@ client.on('message', async msg => {
             msg.delete()
             await _user.balance(msg.channel.name, data => {
                 if (typeof data === 'number') {
-                    return msg.channel.sendMessage(embed.important(3407616, "```bash\"remain GB:"  + data.toFixed(2) + "\"```"))
+                    return msg.channel.sendMessage(embed.important(3407616, "```remain GB:"  + data.toFixed(2) + "```"))
                 } else {
                     return msg.channel.sendMessage(data)
                 }
