@@ -156,7 +156,6 @@ client.on('message', async msg => {
         else if (cmd === `${prefix}login`) {
             // need verify user!!
             // console.log(server.channels)
-            msg.delete();
             
             await _user.login(author.id, permsName, data => {
                 if (data.bool) {
@@ -193,6 +192,7 @@ client.on('message', async msg => {
                     msg.channel.sendMessage(embed.important(3407616, "```\"Login Success:"  + author.username + "\"```"))
                 }
                 else {
+                    msg.delete();
                     msg.channel.sendMessage(data.msg);
                 }
             }).catch(err => {
