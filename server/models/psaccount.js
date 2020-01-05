@@ -15,10 +15,11 @@ const PsaccountSchema = new mongoose.Schema({
     balance: {
         type: Number,
         require: true,
+        default: 50
     },
     emptyBalance: {
         type: Number,
-
+        default: 0
     },
     psEmail: {
         type: String,
