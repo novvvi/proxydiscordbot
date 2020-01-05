@@ -30,11 +30,11 @@ module.exports = {
         await _user.findOne({discordId: id}, (err, data) => {
             if(err) {
                 // callback ({bool: false, msg: "All proxies are in use"})
-                return {bool: false, msg: "All proxies are in use"}
+                return {bool: false, msg: "You must !active first or All proxies are in use"}
             }
             else {
                 if(data == null){
-                    return {bool: false, msg: "You must !active first"}
+                    return {bool: false, msg: "You must !active first or All proxies are in use"}
                 } else {
                     clientBal = data.credit
                 }

@@ -186,7 +186,7 @@ client.on('message', async msg => {
                                     });
                                 }
                             )
-                            chan.send(embed.commands);
+                            chan.send(embed.important(16060689, "```" + embed.commands + "```"))
                         })
                     msg.delete();
                     msg.channel.sendMessage(embed.important(3407616, "```\"Login Success:"  + author.username + "\"```"))
