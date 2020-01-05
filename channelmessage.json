@@ -1,0 +1,69 @@
+TextChannel {
+    type: 'text',
+    deleted: false,
+    id: '657018172590915605',
+    name: 'terminal-enviproduction',
+    position: 4,
+    parentID: '656760744078999563',
+    permissionOverwrites: Collection [Map] {},
+    topic: null,
+    nsfw: false,
+    lastMessageID: null,
+    lastPinTimestamp: null,
+    rateLimitPerUser: 0,
+    guild: Guild {
+      members: Collection [Map] {
+        '186693354124345344' => [GuildMember],
+        '520094973031612436' => [GuildMember],
+        '629734303202279424' => [GuildMember],
+        '656764483171254284' => [GuildMember]
+      },
+      channels: Collection [Map] {
+        '656754615790075905' => [CategoryChannel],
+        '656754615790075906' => [CategoryChannel],
+        '656754615790075908' => [VoiceChannel],
+        '656754907533279245' => [TextChannel],
+        '656760320584318976' => [TextChannel],
+        '656760744078999563' => [CategoryChannel],
+        '656833861719687179' => [TextChannel],
+        '656838939772059649' => [TextChannel],
+        '657018172590915605' => [Circular]
+      },
+      roles: Collection [Map] {
+        '656754615790075904' => [Role],
+        '656756534075719700' => [Role],
+        '656766959094071306' => [Role],
+        '656835569388879892' => [Role]
+      },
+      presences: Collection [Map] {
+        '520094973031612436' => [Presence],
+        '629734303202279424' => [Presence],
+        '656764483171254284' => [Presence]
+      },
+      deleted: false,
+      available: true,
+      id: '656754615790075904',
+      name: 'One Proxies',
+      icon: null,
+      splash: null,
+      region: 'us-central',
+      memberCount: 4,
+      large: false,
+      features: [],
+      applicationID: null,
+      afkTimeout: 300,
+      afkChannelID: null,
+      systemChannelID: null,
+      embedEnabled: undefined,
+      verificationLevel: 0,
+      explicitContentFilter: 1,
+      mfaLevel: 0,
+      joinedTimestamp: 1576655845193,
+      defaultMessageNotifications: 'ALL',
+      ownerID: '629734303202279424',
+      _rawVoiceStates: Collection [Map] {},
+      emojis: Collection [Map] {}
+    },
+    messages: Collection [Map] {},
+    _typing: Map {}
+  }
