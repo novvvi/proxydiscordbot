@@ -16,9 +16,11 @@ module.exports = {
     createUser: async (data, callback) => {
         await _user.create(data, (err, data) => {
             if(err) {
+                console.log(err)
                 callback({msg: err})
             }
             else {
+                console.log(data)
                 callback({msg: "Users has added to database"})
             }
         })

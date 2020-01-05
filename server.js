@@ -125,8 +125,8 @@ client.on('message', async msg => {
                 }
             })
             console.log(usersData)
-            await _admin.createUser(usersData, async (data) => {
-                await msg.channel.sendMessage(data.msg);
+            await _admin.createUser(usersData, (data) => {
+                msg.channel.sendMessage(data.msg);
             })
 
         }
