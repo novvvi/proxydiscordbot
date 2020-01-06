@@ -13,7 +13,9 @@ exports.gen = (num, data, location, setting, chan) => {
         kr: "_South Korea"
     }
         
-    
+    if(num > 500) {
+        num = 500;
+    }
 
     // var ip = iphost[Math.floor(Math.random()*iphost.length)];
     var proxy = `use.enviproxy.us:31112:${data.user}:${data.pass}${countries[location]}`

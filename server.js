@@ -10,6 +10,18 @@ var appDir = path.dirname(require.main.filename);
 const fs = require('fs');
 const embed = require('./embed/message')
 const prefix = "!"
+var path = require('path');
+var util = require('util');
+
+//save log
+var log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'w'});
+var log_stdout = process.stdout;
+
+console.log = function(d) { //
+    log_file.write(util.format(d) + '\n');
+    log_stdout.write(util.format(d) + '\n');
+};
+
 
 
 const client = new discord.Client({
