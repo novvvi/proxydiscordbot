@@ -30,11 +30,11 @@ module.exports = {
         await _user.findOne({discordId: id}, (err, data) => {
             if(err) {
                 // callback ({bool: false, msg: "All proxies are in use"})
-                return {bool: false, msg: "msg1: You must !active first or All proxies are in use"}
+                return {bool: false, msg: "msg1: Message ENVI Proxies Bot !active <user>@<pass> before login"}
             }
             else {
                 if(data == null){
-                    return {bool: false, msg: "msg2: You must !active first or All proxies are in use"}
+                    return {bool: false, msg: "msg2: Message ENVI Proxies Bot !active <user>@<pass> before login"}
                 } else {
                     clientBal = data.credit
                 }
@@ -46,11 +46,11 @@ module.exports = {
         await _psaccount.findOne({discordId: null},
             async (err, acc) => {
             if(err) {
-                callback ({bool: false, msg: "msg3: You must !active first or All proxies are in use"})
+                callback ({bool: false, msg: "msg3: All proxies are in use"})
             }
             else {
                 if(acc == null) {
-                    callback ({bool: false, msg: "msg4: You must !active first or All proxies are in use"})
+                    callback ({bool: false, msg: "msg4: All proxies are in use"})
                 } else {
                     var psbalance;
                     await resource.balance(acc.psAuth, result => {psbalance = result})
@@ -60,9 +60,11 @@ module.exports = {
                     acc.emptyBalance = psbalance - clientBal
                     acc.save( err => {
                         if(err) {
-                            callback ({bool: false, msg: err})
+                            callback ({bool: false, msg: "Message ENVI Proxies Bot !active <user>@<pass> before login"})
+                        }else {
+                            callback ({bool: true})
                         }
-                        callback ({bool: true})
+                        
                 })
                 }
                 

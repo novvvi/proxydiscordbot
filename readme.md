@@ -17,3 +17,7 @@ ubuntu setup
 Next let’s install PM2, a process manager for Node.js applications. PM2 makes it possible to daemonize applications so that they will run in the background as a service.
 
 - sudo npm install pm2@latest -g
+pm2 start hello.js
+
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04
