@@ -1,7 +1,7 @@
 const resource = require('../api/resource');
 const mongoose = require('mongoose');
 var _account = mongoose.model("Psaccount");
-
+var _resource = require('../api/resource')
 
 obj = {
     pstreams: (client) => {
@@ -23,20 +23,39 @@ obj = {
 
         const updateAcc = (id, currentBal, pastBal, emp) => {
             return new Promise(resolve => {
-                _account.updateOne({ "_id": id }, { "$set": { "balance": currentBal } }, (err, data) => {
+                _account.findOne({ "_id": id }, async (err, data) => {
                     if (err) {
                         console.log("err")
                         resolve(console.log(err))
                     } else {
                         if(pastBal <= emp) {
-                            var channel = client.guilds.get('656754615790075904')
-                            .channels.find(chan => chan.name === i.channelName)
-                            channel.delete();
-                            console.log("finish1")
-                            resolve(console.log(data))
+                            await _resource.changePassword(data.psAuth, data.psCsrf, pw => {
+                                if(typeof pw === "string") {
+                                    data.balance = currentBal;
+                                    data.psPxPassword = pw;
+                                    data.channelName = null;
+                                    data.discordId = null;
+                                    data.save( err => {
+                                        if(err) {
+                                            console.log(err)
+                                        }else {
+                                            var channel = client.guilds.get('656754615790075904')
+                                            .channels.find(chan => chan.name === i.channelName)
+                                            channel.delete();
+                                            console.log(`${data.d} it is done for user`)
+                                            resolve(console.log(data))
+                                        }
+                                        
+                                    })
+                                    
+                                }else {
+                                    console.log("fail to change password, and save")
+                                    resolve(console.log(data.channelName,data.balance))
+                                }
+                            })
                         } else {
-                            console.log("finish2")
-                            resolve(console.log(data))
+                            console.log("still have balance left")
+                            resolve(console.log(data.channelName,data.balance))
                         }
                     }
                 })

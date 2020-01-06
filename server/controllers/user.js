@@ -4,7 +4,7 @@ var _psaccount = mongoose.model("Psaccount");
 var resource = require("../api/resource")
 
 
-module.exports = {
+var _userFunction = {
     active: async (user, pass, id, callback) => {
         await _user.findOneAndUpdate(
             {username: user, password: pass},
@@ -65,7 +65,7 @@ module.exports = {
                             callback ({bool: true})
                         }
                         
-                })
+                    })
                 }
                 
             }
@@ -74,18 +74,30 @@ module.exports = {
     },
 
     logout: async (name, callback) => {
-        await _psaccount.findOneAndUpdate({channelName: name},
-            {discordId: null, emptyBalance: null, channelName: null},
-            {new: true}, (err, data) => {
+        await _psaccount.findOne({channelName: name}, async (err, acc) => {
                 if(err) {
                     callback ({bool: false})
                 }
                 else {
-                    if(data === null) {
+                    if(acc === null) {
                         callback ({bool: false})
                     }
                     else {
-                        callback ({bool: true})
+                        var psPassword;
+                        await resource.changePassword(acc.psAuth, acc.psCsrf, result => {psPassword = result})
+                        // console.log(psPassword);
+                        acc.psPxPassword = psPassword;
+                        acc.discordId =  null;
+                        acc.emptyBalance = null;
+                        acc.channelName = null;
+                        acc.save( err => {
+                            if(err) {
+                                callback ({bool: false})
+                            }else {
+                                callback ({bool: true})
+                            }
+                        })
+                        
                     }
                 }
             }
@@ -158,3 +170,6 @@ module.exports = {
 
 
 }
+
+
+module.exports = _userFunction
