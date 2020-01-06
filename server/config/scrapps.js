@@ -29,8 +29,12 @@ obj = {
                         resolve(console.log(err))
                     } else {
                         if(pastBal <= emp) {
+                            console.log(data.psAuth + " " + data.psCsrf)
                             await _resource.changePassword(data.psAuth, data.psCsrf, pw => {
-                                if(typeof pw === "string") {
+                                console.log("this is " + pw)
+                                if(typeof pw != null) {
+                                    var channel = client.guilds.get('656754615790075904').channels.find(chan => chan.name === data.channelName)
+                                    channel.delete();
                                     data.balance = currentBal;
                                     data.psPxPassword = pw;
                                     data.channelName = null;
@@ -39,11 +43,8 @@ obj = {
                                         if(err) {
                                             console.log(err)
                                         }else {
-                                            var channel = client.guilds.get('656754615790075904')
-                                            .channels.find(chan => chan.name === chan.channelName)
-                                            channel.delete();
-                                            console.log(`${data.d} it is done for user`)
-                                            resolve(console.log(data))
+                                            console.log(`it is done for user`)
+                                            resolve(console.log(data.channelName,data.balance))
                                         }
                                         
                                     })
@@ -88,7 +89,7 @@ obj = {
                 await sleep(100000);
                 obj.pstreams(client)
             }else {
-                await updateAllAccounts(accs, sleep(30000));
+                await updateAllAccounts(accs, sleep(10000));
                 console.log("finish check, will run again")
                 obj.pstreams(client)
             }
