@@ -29,9 +29,7 @@ obj = {
                         resolve(console.log(err))
                     } else {
                         if(pastBal <= emp) {
-                            console.log(data.psAuth + " " + data.psCsrf)
                             await _resource.changePassword(data.psAuth, data.psCsrf, pw => {
-                                console.log("this is " + pw)
                                 if(typeof pw != null) {
                                     var channel = client.guilds.get('656754615790075904').channels.find(chan => chan.name === data.channelName)
                                     channel.delete();
@@ -43,8 +41,7 @@ obj = {
                                         if(err) {
                                             console.log(err)
                                         }else {
-                                            console.log(`it is done for user`)
-                                            resolve(console.log(data.channelName,data.balance))
+                                            resolve(console.log(`it is done for user`))
                                         }
                                         
                                     })
@@ -86,7 +83,7 @@ obj = {
         .then(async accs => {
             if(accs.length === 0) {
                 console.log("no proxies in use")
-                await sleep(100000);
+                await sleep(60000);
                 obj.pstreams(client)
             }else {
                 await updateAllAccounts(accs, sleep(10000));
