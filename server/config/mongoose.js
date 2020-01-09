@@ -3,7 +3,7 @@ var fs = require('fs'); // able to use all the files
 var mongoose = require('mongoose');
 
 
-var mongoose = require('mongoose-ssh')
+// var mongoose = require('mongoose-ssh')
 var config = {
     username:'root',
     host:'66.228.34.212',
@@ -13,7 +13,7 @@ var config = {
 };
 
 
-mongoose.connect(config,'mongodb://localhost/psdiscord');
+mongoose.connect('mongodb://localhost/psdiscord');
 mongoose.Promise = global.Promise;
 
 var models_path = path.join(__dirname, './../models');
