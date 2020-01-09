@@ -5,11 +5,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 const PsaccountSchema = new mongoose.Schema({
     discordId: {
-        type: String,
-        index: {
-            unique: true,
-            partialFilterExpression: { discordId: { $type: 'string' } },
-        }
+        type: String
     },
     
     balance: {
@@ -29,17 +25,13 @@ const PsaccountSchema = new mongoose.Schema({
         }
     },
     psPassword: {
-        type: String,
-        index: {
-            unique: true,
-            partialFilterExpression: { psPassword: { $type: 'string' } },
-        }
+        type: String
     },
     psPxUsername: {
         type: String
     },
     psPxPassword: {
-        type: String,
+        type: String
     },
     psAuth: {
         type: String

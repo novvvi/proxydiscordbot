@@ -51,6 +51,9 @@ var _userFunction = {
             else {
                 if(acc == null) {
                     callback ({bool: false, msg: "msg4: All proxies are in use"})
+                }
+                else if(clientBal == 0) {
+                    callback ({bool: false, msg: "There is no GB left in your account"})
                 } else {
                     var psbalance;
                     await resource.balance(acc.psAuth, result => {psbalance = result})
@@ -85,6 +88,7 @@ var _userFunction = {
                     else {
                         var psPassword;
                         await resource.changePassword(acc.psAuth, acc.psCsrf, result => {psPassword = result})
+                        await _userFunction.balance(name, bal => {console.log(`${name} logout and updated user balance with ${bal}`)});
                         // console.log(psPassword);
                         acc.psPxPassword = psPassword;
                         acc.discordId =  null;
@@ -105,6 +109,17 @@ var _userFunction = {
         
     },
 
+    userBalance: async(id, bal) => {
+        await _user.findOneAndUpdate({discordId: id}, {$set: {bal}},{new: true}, (err,acc) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(acc.credit)
+            }
+        })
+    },
+
+
     balance: async (name, callback) => {
         await _psaccount.findOne({channelName: name}, async (err, acc) => {
             if(err) {
@@ -113,8 +128,9 @@ var _userFunction = {
             else{
                 // console.log(acc)
                 var psbalance;
-                await resource.balance(acc.psAuth, result => {psbalance = result})
-                acc.balance = psbalance
+                await resource.balance(acc.psAuth, result => {psbalance = result});
+                await _userFunction.userBalance(acc.discordId, psbalance - acc.emptyBalance);
+                acc.balance = psbalance;
                 acc.save( err => {
                     if(err) {
                         callback ("error2 !balance: please create a ticket in ticket channel")

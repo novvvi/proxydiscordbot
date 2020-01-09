@@ -1,9 +1,19 @@
 var path = require('path');
-
 var fs = require('fs'); // able to use all the files
-
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/psdiscord');
+
+
+var mongoose = require('mongoose-ssh')
+var config = {
+    username:'root',
+    host:'66.228.34.212',
+    port:22,
+    dstPort:27017,
+    password:'Mylam213!'
+};
+
+
+mongoose.connect(config,'mongodb://localhost/psdiscord');
 mongoose.Promise = global.Promise;
 
 var models_path = path.join(__dirname, './../models');

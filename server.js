@@ -158,7 +158,8 @@ client.on('message', async msg => {
 
     // msg.author.id && 
     if (msg.channel.name === "login") {
-        var permsName = "terminal-" + author.username;
+        var combine = "terminal-" + author.username;
+        var permsName = combine.toLowerCase();
         //656838939772059649'
         var matchchan = server.channels.find(chan => chan.permissionOverwrites.has(author.id))
         if (matchchan !== null) {
