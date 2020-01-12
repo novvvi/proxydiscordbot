@@ -110,7 +110,7 @@ var _userFunction = {
     },
 
     userBalance: async(id, bal) => {
-        await _user.findOneAndUpdate({discordId: id}, {$set: {bal}},{new: true}, (err,acc) => {
+        await _user.findOneAndUpdate({discordId: id}, {$set: {credit: bal}},{new: true}, (err,acc) => {
             if (err) {
                 console.log(err);
             } else {
@@ -129,7 +129,10 @@ var _userFunction = {
                 // console.log(acc)
                 var psbalance;
                 await resource.balance(acc.psAuth, result => {psbalance = result});
-                await _userFunction.userBalance(acc.discordId, psbalance - acc.emptyBalance);
+                
+                var subtract = psbalance - acc.emptyBalance
+                var remainbalance =  Number(subtract.toFixed(2))
+                await _userFunction.userBalance(acc.discordId, remainbalance);
                 acc.balance = psbalance;
                 acc.save( err => {
                     if(err) {
