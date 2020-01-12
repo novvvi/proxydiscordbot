@@ -13,7 +13,7 @@ var config = {
 };
 
 
-mongoose.connect('mongodb://localhost/psdiscord');
+mongoose.connect('mongodb://localhost/psdiscord',{ useFindAndModify: false });
 mongoose.Promise = global.Promise;
 
 var models_path = path.join(__dirname, './../models');

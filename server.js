@@ -76,11 +76,11 @@ client.on('message', async msg => {
                 console.log(activeResponse)
                 if (activeResponse.bool) {
                     // let role = msg.guild.roles.find(role => role.name === "Active Acccount");
-                    author.sendMessage(activeResponse.msg)
+                    author.send(activeResponse.msg)
                     // console.log(server.channels)
 
                 } else {
-                    author.sendMessage(activeResponse.msg)
+                    author.send(activeResponse.msg)
                 }
             }
         }
@@ -161,7 +161,9 @@ client.on('message', async msg => {
         var combine = "terminal-" + author.username;
         var permsName = combine.toLowerCase();
         //656838939772059649'
-        var matchchan = server.channels.find(chan => chan.permissionOverwrites.has(author.id))
+        console.log(permsName)
+        var matchchan = server.channels.find(chan => chan.permissionOverwrites.has(author.id) && chan.name === permsName)
+        console.log(matchchan)
         if (matchchan !== null) {
             msg.delete();
             return msg.channel.sendMessage(embed.important(16060689, "```\n- already Login: " + author.username + "please check your Channel under \"COMMAND\" Calogary```"))
