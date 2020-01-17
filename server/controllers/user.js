@@ -114,7 +114,7 @@ var _userFunction = {
             if (err) {
                 console.log(err);
             } else {
-                console.log(acc.credit)
+                console.log(`${id} - user balance ${acc.credit}`)
             }
         })
     },

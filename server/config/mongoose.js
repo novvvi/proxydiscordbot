@@ -9,7 +9,7 @@ var config = {
     host:'66.228.34.212',
     port:22,
     dstPort:27017,
-    password:'Mylam213!'
+    password:'nklHui10m14d!'
 };
 
 

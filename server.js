@@ -173,6 +173,7 @@ client.on('message', async msg => {
             // console.log(server.channels)
             
             await _user.login(author.id, permsName, data => {
+                console.log(data)
                 if (data.bool) {
                     server.createChannel(permsName, 'text').then( // Create the actual voice channel.
                         (chan) => {

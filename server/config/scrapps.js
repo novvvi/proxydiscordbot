@@ -1,8 +1,9 @@
 const resource = require('../api/resource');
 const mongoose = require('mongoose');
 var _account = mongoose.model("Psaccount");
-var _user = mongoose.model("User");
+var User = mongoose.model("User");
 var _resource = require('../api/resource')
+var _user = require('../controllers/user')
 
 obj = {
     pstreams: (client) => {
@@ -53,6 +54,18 @@ obj = {
                                 }
                             })
                         } else {
+                            let subtract = currentBal - emp;
+                            var newBal =  Number(subtract.toFixed(2))
+                            data.balance = currentBal;
+                            data.save( err => {
+                                if(err) {
+                                    console.log(err)
+                                }else {
+                                    resolve(console.log(`updated user and account balance`))
+                                }
+                                
+                            })
+                            await _user.userBalance(data.discordId, newBal);
                             resolve(console.log(`${data.channelName} still have balance left`))
                         }
                     }
