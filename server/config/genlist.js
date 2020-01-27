@@ -10,7 +10,8 @@ exports.gen = (num, data, location, setting, chan) => {
         ca: "_country-Canada",
         jp: "_country-Japan",
         sa: "_country-Singapore", 
-        kr: "_country-South Korea"
+        kr: "_country-SouthKorea",
+        hk: "_country-HongKong"
     }
         
     if(num > 500) {
@@ -18,7 +19,7 @@ exports.gen = (num, data, location, setting, chan) => {
     }
 
     // var ip = iphost[Math.floor(Math.random()*iphost.length)];
-    var proxy = `test.enviproxy.us:31112:${data.user}:${data.pass}${countries[location]}`
+    var proxy = `use.enviproxy.us:31112:${data.user}:${data.pass}${countries[location]}`
     randexp = new RandExp(/\w{8}/);
     var appDir = path.dirname(require.main.filename);
 
@@ -26,11 +27,11 @@ exports.gen = (num, data, location, setting, chan) => {
 
     if(setting === "-r") {
         for(i = 0; i <= num; i++){
-            list += '\n' + proxy
+            list += proxy + '\r\n'
         }
     } else if(setting === "-s") {
         for(i = 0; i < num; i++){
-            list += '\n' + proxy + "_session-" + randexp.gen()
+            list +=  proxy + "_session-" + randexp.gen() + '\r\n'
         }
     }
 
