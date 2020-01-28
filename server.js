@@ -244,7 +244,7 @@ client.on('message', async msg => {
             })
         }
         else if (cmd.startsWith("!gen ")) {
-            await _user.list(msg.channel.name,  data => {
+            await _user.list(msg.channel.name, async data => {
                 if (typeof data === "string") {
                     msg.delete()
                     msg.channel.sendMessage("Your password has changed")
