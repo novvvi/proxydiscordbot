@@ -23,14 +23,14 @@ obj = {
             })
         }
 
-        var updateAcc = (id, currentBal, pastBal, emp) => {
+        var updateAcc = (id, currentBal, emp) => {
             return new Promise(resolve => {
                 _account.findOne({ "_id": id }, async (err, data) => {
                     if (err) {
                         console.log("err")
                         resolve(console.log(err))
                     } else {
-                        if(pastBal <= emp) {
+                        if(currentBal <= emp) {
                             await _user.userBalance(data.discordId, 0);
                             await _resource.changePassword(data.psAuth, data.psCsrf, pw => {
                                 if(typeof pw != null) {
@@ -83,17 +83,19 @@ obj = {
                 
 
             for(i = 0; i < accs.length; i++) {
-                await sleep(10000);
-                var acc = accs[i]
-                var pastBal = acc["balance"]
-                var emp = acc["emptyBalance"]
-                var id = acc["_id"]
-                var auth = acc["psAuth"]
-                var chan = acc["channelName"]
-                var currentBal = await fetchingBal(auth)
-                if (currentBal != null || pastBal != currentBal) {
-                    await updateAcc(id, currentBal, pastBal, emp);
+                try{
+                    await sleep(5000);
+                    var acc = accs[i]
+                    // var pastBal = acc["balance"]
+                    var emp = acc["emptyBalance"] // Cannot read property 'emptyBalance' of undefined
+                    var id = acc["_id"]
+                    var auth = acc["psAuth"]
+                    var chan = acc["channelName"]
+                    var currentBal = await fetchingBal(auth)
+                    await updateAcc(id, currentBal, emp);
                     console.log(`${id} - ${chan} balance ${currentBal}\n`)
+                } catch(e) {
+                    console.log(e)
                 }
             }
                 
@@ -126,7 +128,7 @@ obj = {
                 await sleep(60000);
                 obj.pstreams(client)
             }else {
-                await updateAllAccounts(accs);
+                await updateAllAccounts(accs); // err here
                 console.log("finish check, will run again")
                 obj.pstreams(client)
             }
