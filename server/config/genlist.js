@@ -20,7 +20,7 @@ exports.gen = (num, data, location, setting, chan) => {
 
     // var ip = iphost[Math.floor(Math.random()*iphost.length)];
     var proxy = `use.enviproxy.us:31112:${data.user}:${data.pass}${countries[location]}`
-    randexp = new RandExp(/\w{8}/);
+    randexp = new RandExp(/\w{7}/);
     var appDir = path.dirname(require.main.filename);
 
     var list = ""

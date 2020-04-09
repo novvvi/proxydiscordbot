@@ -21,3 +21,8 @@ pm2 start hello.js
 
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04
+
+
+** Error
+user name with symbol will come up with console name different from database
+
