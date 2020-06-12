@@ -31,15 +31,15 @@ obj = {
                         resolve(console.log(err))
                     } else {
                         if(currentBal <= emp) {
-                            // await _user.userBalance(data.discordId, 0);
+                            await _user.userBalance(data.discordId, 0);
                             await _resource.changePassword(data.psAuth, data.psCsrf, pw => {
                                 if(typeof pw != null) {
-                                    // var channel = client.guilds.get('656754615790075904').channels.find(chan => chan.name === data.channelName)
-                                    // channel.delete();
+                                    var channel = client.guilds.get('656754615790075904').channels.find(chan => chan.name === data.channelName)
+                                    channel.delete();
                                     data.balance = currentBal;
                                     data.psPxPassword = pw;
-                                    // data.channelName = null;
-                                    // data.discordId = null;
+                                    data.channelName = null;
+                                    data.discordId = null;
                                     data.save( err => {
                                         if(err) {
                                             console.log(err)
@@ -54,6 +54,7 @@ obj = {
                                 }
                             })
                         } else {
+                            // need try and catch
                             let subtract = currentBal - emp;
                             var newBal =  Number(subtract.toFixed(2))
                             data.balance = currentBal;

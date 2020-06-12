@@ -26,3 +26,8 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-applica
 ** Error
 user name with symbol will come up with console name different from database
 
+** User Issue
+User got kickout and empty their account while they still have credit in the proxies.
+
+*** 6/11/2020
+Try to remove the update credit and remove user from terminal
