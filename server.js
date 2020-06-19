@@ -229,12 +229,12 @@ client.on('message', async msg => {
             })
 
         }
-        else if (cmd === "!logout") {
-            await _user.logout(msg.channel.name, (data) => {
-                console.log(data.bool);
-                if (data.bool) return msg.channel.delete();
-            })
-        }
+        // else if (cmd === "!logout") {
+        //     await _user.logout(msg.channel.name, (data) => {
+        //         console.log(data.bool);
+        //         if (data.bool) return msg.channel.delete();
+        //     })
+        // }
         else if (cmd === "!pass") {
             msg.delete()
             await _user.changePassword(msg.channel.name, data => {
