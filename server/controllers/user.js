@@ -76,38 +76,38 @@ var _userFunction = {
         
     },
 
-    logout: async (name, callback) => {
-        await _psaccount.findOne({channelName: name}, async (err, acc) => {
-                if(err) {
-                    callback ({bool: false})
-                }
-                else {
-                    if(acc === null) {
-                        callback ({bool: false})
-                    }
-                    else {
-                        var psPassword;
-                        await resource.changePassword(acc.psAuth, acc.psCsrf, result => {psPassword = result})
-                        await _userFunction.balance(name, bal => {console.log(`${name} logout and updated user balance with ${bal}`)});
-                        // console.log(psPassword);
-                        acc.psPxPassword = psPassword;
-                        acc.discordId =  null;
-                        acc.emptyBalance = null;
-                        acc.channelName = null;
-                        acc.save( err => {
-                            if(err) {
-                                callback ({bool: false})
-                            }else {
-                                callback ({bool: true})
-                            }
-                        })
+    // logout: async (name, callback) => {
+    //     await _psaccount.findOne({channelName: name}, async (err, acc) => {
+    //             if(err) {
+    //                 callback ({bool: false})
+    //             }
+    //             else {
+    //                 if(acc === null) {
+    //                     callback ({bool: false})
+    //                 }
+    //                 else {
+    //                     var psPassword;
+    //                     await resource.changePassword(acc.psAuth, acc.psCsrf, result => {psPassword = result})
+    //                     await _userFunction.balance(name, bal => {console.log(`${name} logout and updated user balance with ${bal}`)});
+    //                     // console.log(psPassword);
+    //                     acc.psPxPassword = psPassword;
+    //                     acc.discordId =  null;
+    //                     acc.emptyBalance = null;
+    //                     acc.channelName = null;
+    //                     acc.save( err => {
+    //                         if(err) {
+    //                             callback ({bool: false})
+    //                         }else {
+    //                             callback ({bool: true})
+    //                         }
+    //                     })
                         
-                    }
-                }
-            }
-        )
+    //                 }
+    //             }
+    //         }
+    //     )
         
-    },
+    // },
 
     userBalance: async(id, bal) => {
         await _user.findOneAndUpdate({discordId: id}, {$set: {credit: bal}},{new: true}, (err,acc) => {
