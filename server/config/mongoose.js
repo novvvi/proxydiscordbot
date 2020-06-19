@@ -9,11 +9,11 @@ var config = {
     host:'66.228.34.212',
     port:22,
     dstPort:27017,
-    password:'nklHui10m14d!'
+    password:'Nafia@213!'
 };
 
 
-mongoose.connect('mongodb://localhost/psdiscord',{ useFindAndModify: false });
+mongoose.connect('mongodb://localhost/psdiscord',{ useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
 var models_path = path.join(__dirname, './../models');

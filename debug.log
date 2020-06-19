@@ -1,0 +1,84 @@
+Bot Name: ENVI BOT
+no proxies in use
+no proxies in use
+terminal-envi
+null
+{
+  bool: false,
+  msg: 'Message ENVI Proxies Bot !active <user>@<pass> before login'
+}
+no proxies in use
+no proxies in use
+terminal-novvvvvi
+null
+{ bool: true }
+520094973031612436 - user balance 0.01
+terminal-novvvvvi still have balance left
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+updated user and account balance
+520094973031612436 - user balance 0.01
+520094973031612436 - user balance 0.01
+updated user and account balance
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+terminal-novvvvvi still have balance left
+520094973031612436 - user balance 0.01
+updated user and account balance
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+terminal-novvvvvi still have balance left
+520094973031612436 - user balance 0.01
+updated user and account balance
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+terminal-novvvvvi still have balance left
+520094973031612436 - user balance 0.01
+updated user and account balance
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+terminal-novvvvvi still have balance left
+520094973031612436 - user balance 0.01
+updated user and account balance
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+terminal-novvvvvi still have balance left
+The file was saved!
+520094973031612436 - user balance 0.01
+terminal-novvvvvi still have balance left
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+updated user and account balance
+successfully deleted local image
+520094973031612436 - user balance 0.01
+updated user and account balance
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+terminal-novvvvvi still have balance left
+520094973031612436 - user balance 0.01
+520094973031612436 - user balance 0.01
+updated user and account balance
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+terminal-novvvvvi still have balance left
+The file was saved!
+successfully deleted local image
+TypeError: Cannot read property 'emptyBalance' of undefined
+    at updateAllAccounts (D:\project\proxy\discordBot\server\config\scrapps.js:91:34)
+    at async D:\project\proxy\discordBot\server\config\scrapps.js:132:17
+finish check, will run again
+520094973031612436 - user balance 0.01
+terminal-novvvvvi still have balance left
+5e1e82489277640465d6c200 - terminal-novvvvvi balance 42.11
+
+finish check, will run again
+updated user and account balance
